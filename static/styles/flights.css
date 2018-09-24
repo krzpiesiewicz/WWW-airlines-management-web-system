@@ -1,0 +1,17 @@
+div.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+}
+
+nav ul li {
+    list-style-type: none;
+}

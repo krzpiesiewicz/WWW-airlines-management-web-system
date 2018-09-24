@@ -1,0 +1,67 @@
+{% extends 'template.html' %}
+{% load staticfiles %}
+
+{% block subtitle %} - Flights{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.js"></script>
+    <link rel="stylesheet" href="/static/styles/flights.css"/>
+{% endblock %}
+
+{% block content %}
+    <nav>
+        <ul>
+            <li><a href="/static/crews.html">Crews</a></li>
+        </ul>
+    </nav>
+    <article>
+        <h1>Flights</h1>
+        <h3>Filter flights with their start times</h3>
+        <form>
+            The earliest day:
+            <input type="date" name="min_date" value="{{ min_date_txt }}">,
+            The latest day:
+            <input type="date" name="max_date" value="{{ max_date_txt }}">
+            <input type="submit" value="Filter" >
+        </form>
+        <h3>Find certain flight</h3>
+        <form>
+            Id:
+            <input type="number" name="id">
+            <input type="submit" value="Find" >
+        </form>
+        {% if flight_not_found %}
+            Flight not found.
+        {% endif %}
+
+        {% include "flights_records_nav.html" %}
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">plane</th>
+                <th scope="col">departure</th>
+                <th scope="col">from</th>
+                <th scope="col">to</th>
+                <th scope="col">arrival</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for f in flights %}
+                <tr>
+                    <th scope="row"><a href="/flight/{{ f.id }}/">{{ f.id }}</a></th>
+                    <td>{{ f.plane.code }}</td>
+                    <td>{{ f.start_time }}</td>
+                    <td>{{ f.start_airport.name }}</td>
+                    <td>{{ f.dest_airport.name }}</td>
+                    <td>{{ f.dest_time }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {% include "flights_records_nav.html" %}
+    </article>
+{% endblock %}

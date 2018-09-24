@@ -1,0 +1,20 @@
+<div class="buttons">
+<form action={{ prev_page_link }} method="get">
+    {% if min_date_txt %}
+        <input type="hidden" name="min_date" value="{{ min_date_txt }}">
+    {% endif %}
+    {% if max_date_txt %}
+        <input type="hidden" name="max_date" value="{{ max_date_txt }}">
+    {% endif %}
+    <input type="submit" value="< Prev"/>
+</form>
+<form action={{ next_page_link }} method="get">
+    {% if min_date_txt %}
+        <input type="hidden" name="min_date" value="{{ min_date_txt }}">
+    {% endif %}
+    {% if max_date_txt %}
+        <input type="hidden" name="max_date" value="{{ max_date_txt }}">
+    {% endif %}
+    <input type="submit" value="Next >"/>
+</form>
+</div>

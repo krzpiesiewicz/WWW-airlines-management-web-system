@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Airlines - Crews</title>
+    <script src="/static/scripts/jquery.js"></script>
+    <script src="/static/scripts/crews.js"></script>
+    <link rel="stylesheet" href="/static/styles/crews.css"/>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div id="logged-info">
+                <span id="username">username</span><button id="logout">Logout</button>
+            </div>
+            <div id="login-form">
+                <input type="text" id="input-username" placeholder="username">
+                <input type="password" id="input-password" placeholder="password">
+                <button id="login">Login</button>
+            </div>
+        </nav>
+        <article>
+            <div id="for-logged">
+                <section>
+                    <h1>Crews</h1>
+                    Choose a crew:
+                    <select id="crew-select" value="add-new">
+                        <option value="add-new">Add a new crew</option>
+                    </select>
+                    <h5>Pilot in command</h5>
+                    <div id="pilot-form">
+                        Pilot's firstnames:
+                        <input type="text" id="pilot-firstnames" value="" placeholder="firstnames">
+                        Pilot's lastname:
+                        <input type="text" id="pilot-lastname" value="" placeholder="lastname">
+                        <br/>
+                        <button id="crew-save">Save</button>
+                        <button id="crew-delete" disabled>Delete</button>
+                        <br/>
+                        <span id="crew-save-log" class="invisible">BLANK</span>
+                    </div>
+                    <h5>Crew members</h5>
+                    <ul id="members"></ul>
+                    <div id="member-form">
+                        Choose a member:
+                        <select id="member-select" value="add-new" disabled>
+                            <option value="add-new">Add a new member</option>
+                        </select>
+                        <br/>
+                        Member's firstnames:
+                        <input type="text" id="member-firstnames" placeholder="firstnames" disabled>
+                        Member's lastname:
+                        <input type="text" id="member-lastname" placeholder="lastname" disabled>
+                        <br/>
+                        <button id="member-save" disabled>Save</button>
+                        <button id="member-delete" disabled>Delete the member</button>
+                        <br/>
+                        <span id="member-save-log" class="invisible">BLANK</span>
+                    </div>
+                </section>
+                <section>
+                    <h1>Flights</h1>
+                    Choose a flight:
+                    <select id="flight-select">
+                        <option value="blank"></option>
+                    </select>
+                    or find by id:
+                    <input type="number" id="find-flight-id" placeholder="flight's id">
+                    <button id="find-flight">Find</button>
+                    <br/>
+                    Flight's crew:
+                    <select id="flight-crew-select"></select>
+                    <button id="flight-save">Save</button>
+                    <br/>
+                    <span id="flight-save-log" class="invisible">BLANK</span>
+                </section>
+            </div>
+        </article>
+    </div>
+</body>
+</html>

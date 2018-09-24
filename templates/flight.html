@@ -1,0 +1,41 @@
+{% extends 'template.html' %}
+{% load staticfiles %}
+
+{% block subtitle %} - Flight {{ flight.id }}{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'styles/flight.css' %}"/>
+{% endblock %}
+
+{% block content %}
+    <article>
+        <h1>Booking seats for flight</h1>
+        <h2>Flight {{ flight.id }}</h2>
+
+        {% if passengers %}
+            <h5>Passengers:</h5>
+            <ul>
+            {% for p in passengers %}
+                <li>{{ p | safe }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% if no_seats %}
+            We are sorry to inform you there is no free seats for this flight.
+        {% else %}
+            Number of free seats at the moment: {{ free_seats }} (of all {{ flight.plane.seat_count }} seats).
+
+            {% if addTicketForm %}
+                <form method="POST">
+                    {% csrf_token %}
+                    <ul>
+                        {{ addTicketForm.as_ul }}
+                        <li><input type="submit"></li>
+                    </ul>
+                </form>
+            {% endif %}
+        {% endif %}
+
+    </article>
+{% endblock %}

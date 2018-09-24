@@ -1,0 +1,25 @@
+.container {
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+#logged-info, #login-form {
+    margin-right: 20px;
+    margin-left: auto;
+}
+
+span.error {
+    color: red;
+}
+
+span.success {
+    color: green;
+}
+
+.invisible {
+    opacity: 0;
+}
